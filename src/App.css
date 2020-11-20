@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.cardContainer{
+  /* width: calc(100%/3); */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* grid-template-columns: 60px 60px; */
+  margin: 2% !important;
+
+}
+
+.card{
+  /* width: calc(100%/3); */
+  
+  margin: 20px !important;
+}
+
+.NavDropdown{
+  color: azure !important;
+}
