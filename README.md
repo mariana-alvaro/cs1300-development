@@ -10,61 +10,49 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+Application Overview -Not Your Common Pup:
+    This React application displays 16 cards with information about not-so-common dog breeds. Each card contains
+    an image of the dog, the breed name, size and exercise needs information, price, and a "This is the one!" 
+    button that adds the dog card to a cart. A user can reach the cart by clicking on the "My Pup Cart" button in
+    the navbar or by scrolling down.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Components Overview:
+    My application has an index, and App, and the components NavBar, FilteredList, DisplayList, and Cart related in
+    the following way:
 
-### `npm run build`
+    -My index renders the App.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    -App contains the list of dogs with their different characteristics and an initial quantity of 0. It returns an
+    instance of FilteredList to pass the list of dogs to the component.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    -NavBar renders a bootstrap Navbar with the "My Pup Cart" button to scroll down to the cart and the "Filter by: Size",
+    "Filter by: Exercise Needs", and "Sort by: Price" dropdown buttons. The dropdown buttons receive their corresponding
+    filtering and sorting methods as a props from FilteredList.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    -FilteredList has the methods for both filters, sorting, adding, removing, and incrementing/decreasing dog quantities
+    from the cart. It filters and sorts the list received from App, and then passes it to DisplayList. It passes the addToCart()
+    method to DisplayList, the filtering and sorting methods to NavBar, and the state of the card, the total price, the removeFromCart(),
+    plusDog(), and minusDog() methods to Cart.
 
-### `npm run eject`
+    -DisplayList maps a bootstrap card to each element on the dog list received as a props from DisplayList in the render method.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    -Cart has a makeCard() method to create the cards for the dogs inside the cart. These cards have +/- buttons that increase/decrease
+    the quantity of dogs in the card and a "Remove" button that eliminates the dog card from the cart. Additionally, the bottom of the Cart
+    displays the total price of the dogs in the cart and has a "Checkout" button that displays an "I hope you liked these pups!" alert 
+    whenever clicked.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Functions Overview:
+    Most methods are coded in my FilteredList component:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    -matchesFilterSize(item) returns true when the state of the size equals the item size. Else, returns false. Then, onSelectFilterSize(event)
+    sets the state of the size to the received event from the handler. matchesFilterExercise(item) and onSelectFilterExercise(event) have the
+    same functionality for the exercise state. The list of dogs is filtered using the matchesFilterExercise/Size criteria in the render method.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    -sortByPrice(items) 
 
-## Learn More
+User Interactions Overview:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
